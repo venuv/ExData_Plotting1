@@ -13,7 +13,10 @@ tblfrm2<- tblfrm[tblfrm$V3!="?",]
 tblfrm2<- tblfrm2[as.Date(tblfrm2$V1,format = "%d/%m/%Y")>=start & 
                       as.Date(tblfrm2$V1,format = "%d/%m/%Y")<=end,]
 
+#draw histogram with title
 hist(as.numeric(tblfrm2$V3),col="red",main="Global Active Power",
      xlab="Global Active Power(kilowatts)")
+
+#save to plot1.png
 dev.copy(png,"plot1.png")
 dev.off()

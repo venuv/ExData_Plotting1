@@ -13,7 +13,12 @@ tblfrm2<- tblfrm[tblfrm$V3!="?",]
 tblfrm2<- tblfrm2[as.Date(tblfrm2$V1,format = "%d/%m/%Y")>=start & 
                       as.Date(tblfrm2$V1,format = "%d/%m/%Y")<=end,]
 
-hist(as.numeric(tblfrm2$V3),col="red",main="Global Active Power",
-     xlab="Global Active Power(kilowatts)")
-dev.copy(png,"plot1.png")
+plot(strptime(paste(tblfrm2$V2,tblfrm2$V1,sep=","),'%H:%M:%S,%d/%m/%Y',tz='GMT'),
+     as.numeric(tblfrm2$V3),
+#    main="Global Active Power By Day",
+    type="l",
+    xlab="",
+    ylab="Global Active Power(kilowatts)")
+
+dev.copy(png,"plot2.png")
 dev.off()
